@@ -585,7 +585,7 @@ def generate_html(spx_price, spx_prev, spx_high, spx_low, spx_52w,
         # Sort: EMAs first, then 10d range, then round numbers, then 52w
         ema_k   = [k for k in key_levels if k.startswith('EMA') or k.startswith('SMA')]
         rng_k   = [k for k in key_levels if k.startswith('10d')]
-        round_k = [k for k in key_levels if k[0].isdigit()]
+        round_k = [k for k in key_levels if k[0].isdigit() and not k.startswith('10d')]
         other_k = [k for k in key_levels if k not in ema_k + rng_k + round_k]
         ordered = ema_k + rng_k + round_k + other_k
 
